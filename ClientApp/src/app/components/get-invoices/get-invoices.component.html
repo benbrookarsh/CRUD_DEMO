@@ -1,0 +1,16 @@
+<div>
+  <table>
+    <tr style="text-align: left">
+      <th>Invoice Number</th>
+      <th>Invoice ID</th>
+      <th>Status</th>
+      <th>Date</th>
+    </tr>
+    <tr (click)="editInvoice(i)" *ngFor="let i of invoices">
+      <td>{{i.invoiceNumber}}</td>
+      <td>{{i.id}}</td>
+      <td>{{i.status}}</td>
+      <td>{{i.date | date: 'medium'}}</td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,24 @@
+  <mat-card-title (click)="postInvoice()">Post Invoice</mat-card-title>
+  <mat-card-subtitle>A project by Ben Brookarsh</mat-card-subtitle>
+
+  <form style="display:grid;" (ngSubmit)="postInvoice()" #invoiceForm="ngForm">
+    <mat-form-field>
+      <input matInput placeholder="Invoice Number" [(ngModel)]="invoice.invoiceNumber" name="invoiceNumber" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Date" [(ngModel)]="invoice.date" name="date" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Status" [(ngModel)]="invoice.status" name="status" required>
+        <mat-option *ngFor="let option of statusOptions" [value]="option">{{ option }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Save</button>
+  </form>
+
+  <mat-spinner strokeWidth="2" diameter="40" style="margin: auto;" *ngIf="isLoading"></mat-spinner>

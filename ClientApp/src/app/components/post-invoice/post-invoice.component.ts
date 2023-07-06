@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import {ApiService} from './services/api.service';
-import {Invoice} from './models/Invoice';
-import {StatusEnum} from './models/StatusEnum';
-import {Constants} from './models/Constants';
+import {Invoice} from '../../models/Invoice';
+import {ApiService} from '../../services/api.service';
+import {StatusEnum} from '../../models/StatusEnum';
+import {Constants} from '../../models/Constants';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-post-invoice',
+  templateUrl: './post-invoice.component.html',
+  styleUrls: ['./post-invoice.component.css']
 })
-export class AppComponent {
+export class PostInvoiceComponent {
 
   isLoading =  false;
 
@@ -38,6 +38,5 @@ export class AppComponent {
     console.log(response);
     this.isLoading = false;
   }
-
 
 }
