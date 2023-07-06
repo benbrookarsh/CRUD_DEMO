@@ -1,0 +1,34 @@
+<mat-card class="card">
+  <mat-card-title>Email Response Times</mat-card-title>
+  <mat-card-subtitle>A project by Ben Brookarsh</mat-card-subtitle>
+
+  <div>
+    <mat-form-field class="form-field">
+      <input matInput  [formControl]="emailFormControl" placeholder="Enter email">
+      <mat-error *ngIf="emailFormControl.hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('email')">Invalid email</mat-error>
+    </mat-form-field>
+
+    <button
+      style="width: 100%;"
+      mat-raised-button
+      color="primary"
+      [disabled]="!emailFormControl.valid"
+      (click)="sendRequest()"
+    >
+      Send Request
+    </button>
+
+
+    <div class="bottom-container">
+    <p *ngIf="response?.receivedTime">Response time: {{ response?.receivedTime | date:'mediumTime' }}</p>
+    <p *ngIf="response?.email">Response email: {{ response?.email }}</p>
+      <span *ngIf="response?.status">
+        Response status:
+        <span [style.color]="response?.status | statusColor">{{ response?.status }}</span>
+      </span>
+
+    <mat-spinner strokeWidth="2" diameter="40" style="margin: auto;" *ngIf="isLoading"></mat-spinner>
+    </div>
+  </div>
+</mat-card>

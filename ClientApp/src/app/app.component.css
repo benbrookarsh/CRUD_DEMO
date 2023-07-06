@@ -1,0 +1,17 @@
+.card {
+  width: 80%;
+  margin: 100px auto auto;
+  padding: 27px;
+  max-width: 707px;
+  min-width: 257px;
+}
+
+.form-field {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.bottom-container {
+  height: 150px;
+  padding: 15px;
+}
