@@ -1,7 +1,6 @@
-{
+﻿{
   "/api": {
-    "_target": "https://localhost:5001",
-    "target": "http://172.29.1.179:5001",
+    "target": "https://localhost:5001",
     "secure": false,
     "changeOrigin":true,
     "logLevel": "debug",

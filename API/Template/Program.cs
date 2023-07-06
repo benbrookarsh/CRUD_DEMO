@@ -42,6 +42,13 @@ builder.Services.Configure<SwaggerUIOptions>(options =>
     options.EnableValidator();
 });
 
+// test for docker container - need to take of for pipeline
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5001);
+    // to listen for incoming http connection on port 5001
+});
+
 //MySQL
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("MySql"),
@@ -64,6 +71,8 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
     });
 }
+
+
 
 app.UseRouting();
 
