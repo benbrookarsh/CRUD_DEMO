@@ -3,6 +3,8 @@
     <tr>
       <th>Invoice Number</th>
       <th>Invoice ID</th>
+      <th>VAT</th>
+      <th>Total</th>
       <th>Status</th>
       <th>Date</th>
       <th></th>
@@ -10,6 +12,8 @@
     <tr class="row" *ngFor="let i of api.invoices">
       <td>{{i.invoiceNumber}}</td>
       <td>{{i.id}}</td>
+      <td>{{i.vat | currency: 'USD'}}</td>
+      <td>{{i.totalAmount | currency: 'USD'}}</td>
       <td [style.color]="i.status | InvoiceStatusColor">{{i.status | InvoiceStatus}}</td>
       <td>{{i.date | date: 'mediumDate'}}</td>
       <td>
@@ -18,7 +22,7 @@
     </tr>
     <tr>
       <th>
-        Total: {{api.invoices.length}} invoice{{api.invoices.length === 1 ? '' : 's'}}
+        Total: {{api?.invoices?.length}} invoice{{api?.invoices?.length === 1 ? '' : 's'}}
       </th>
     </tr>
   </table>

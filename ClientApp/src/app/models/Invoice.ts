@@ -4,4 +4,6 @@ export class Invoice {
   invoiceNumber: string;
   date: Date;
   status: StatusEnum;
+  totalAmount: number;
+  vat: number;
 }
