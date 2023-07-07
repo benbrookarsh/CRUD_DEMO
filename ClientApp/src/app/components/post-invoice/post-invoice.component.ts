@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Invoice} from '../../models/Invoice';
 import {ApiService} from '../../services/api.service';
 import {StatusEnum} from '../../models/StatusEnum';
@@ -12,31 +12,34 @@ import {Constants} from '../../models/Constants';
 export class PostInvoiceComponent {
 
   isLoading =  false;
-
-  invoice = new Invoice();
+  _invoice = new Invoice();
   statusOptions: string[] = [];
+  update = false;
+
   constructor(private api: ApiService) {
-    this.statusOptions = this.getEnumValues(StatusEnum);
+    this.statusOptions = Constants.getEnumValues(StatusEnum);
   }
 
-  getEnumValues(enumObject: any): string[] {
-    return Object.keys(enumObject)
-      .filter(key => isNaN(Number(enumObject[key])))
-      .map(key => enumObject[key]);
+  @Input() set invoice(invoice: Invoice) {
+    if (invoice) {
+      this._invoice = invoice;
+      this.update = true;
+    }
   }
+
 
   async postInvoice() {
     this.isLoading = true;
-    console.log(this.invoice);
-    const invoice = {
-      id: Constants.guidNull,
-      invoiceNumber: '123',
-      date: this.invoice.date,
-      status: 0
-    };
-    const response = await this.api.createInvoice(invoice);
+    let response;
+    if (this.update) {
+      response = await this.api.updateInvoice(this._invoice);
+    } else {
+      this._invoice.id = Constants.guidNull;
+      response = await this.api.createInvoice(this._invoice);
+    }
     console.log(response);
     this.isLoading = false;
   }
+
 
 }

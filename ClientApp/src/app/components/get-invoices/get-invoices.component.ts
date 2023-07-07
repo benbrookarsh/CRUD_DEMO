@@ -11,7 +11,6 @@ import {EditInvoiceDialogComponent} from '../../dialogs/edit-invoice-dialog/edit
 })
 export class GetInvoicesComponent implements OnInit {
 
-
   isLoading = true;
   invoices: Invoice[] = [];
 
@@ -25,6 +24,8 @@ export class GetInvoicesComponent implements OnInit {
   }
 
   async editInvoice(i: Invoice) {
-    await this.dialog.open(EditInvoiceDialogComponent, i).afterClosed();
+    this.dialog.open(EditInvoiceDialogComponent, {data: i}).afterClosed();
   }
+
+
 }

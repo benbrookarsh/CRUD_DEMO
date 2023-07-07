@@ -18,6 +18,7 @@ import {PostInvoiceComponent} from './components/post-invoice/post-invoice.compo
 import {GetInvoicesComponent} from './components/get-invoices/get-invoices.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {EditInvoiceDialogComponent} from './dialogs/edit-invoice-dialog/edit-invoice-dialog.component';
+import {InvoiceStatusPipe} from './pipes/InvoiceStatusPipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {EditInvoiceDialogComponent} from './dialogs/edit-invoice-dialog/edit-inv
     HttpStatusPipe,
     PostInvoiceComponent,
     GetInvoicesComponent,
-    EditInvoiceDialogComponent
+    EditInvoiceDialogComponent,
+    InvoiceStatusPipe
   ],
   imports: [
     BrowserModule,
