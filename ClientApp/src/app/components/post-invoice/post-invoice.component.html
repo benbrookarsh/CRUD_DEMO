@@ -18,7 +18,7 @@
     </mat-select>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Save</button>
+  <button mat-raised-button color="primary" type="submit">{{update? 'Update':'Create'}}</button>
 </form>
 
 <mat-spinner strokeWidth="2" diameter="40" style="margin: auto;" *ngIf="isLoading"></mat-spinner>

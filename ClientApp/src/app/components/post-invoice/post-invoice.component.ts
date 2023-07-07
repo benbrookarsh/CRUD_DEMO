@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Invoice} from '../../models/Invoice';
 import {ApiService} from '../../services/api.service';
 import {StatusEnum} from '../../models/StatusEnum';
@@ -27,12 +27,15 @@ export class PostInvoiceComponent {
     }
   }
 
+  @Output() submit = new EventEmitter<boolean>();
+
 
   async postInvoice() {
     this.isLoading = true;
     let response;
     if (this.update) {
       response = await this.api.updateInvoice(this._invoice);
+      this.submit.emit(true);
     } else {
       this._invoice.id = Constants.guidNull;
       response = await this.api.createInvoice(this._invoice);

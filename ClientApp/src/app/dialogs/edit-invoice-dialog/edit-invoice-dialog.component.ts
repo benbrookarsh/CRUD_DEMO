@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Invoice} from '../../models/Invoice';
 
 @Component({
@@ -11,11 +11,17 @@ export class EditInvoiceDialogComponent {
 
   invoice: Invoice;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Invoice) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Invoice,
+              public dialogRef: MatDialogRef<EditInvoiceDialogComponent>) {
     this.invoice = data;
   }
 
   ngOnInit(): void {
   }
 
+  protected readonly close = close;
+
+  closeDialog() {
+    this.dialogRef.close();
+  }
 }

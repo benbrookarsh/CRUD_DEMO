@@ -6,7 +6,7 @@
       <th>Status</th>
       <th>Date</th>
     </tr>
-    <tr (click)="editInvoice(i)" *ngFor="let i of invoices">
+    <tr class="row" (click)="editInvoice(i)" *ngFor="let i of invoices">
       <td>{{i.invoiceNumber}}</td>
       <td>{{i.id}}</td>
       <td>{{i.status | InvoiceStatus}}</td>
