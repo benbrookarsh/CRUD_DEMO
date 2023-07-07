@@ -23,9 +23,13 @@ export class GetInvoicesComponent implements OnInit {
     this.isLoading = false;
   }
 
-  async editInvoice(i: Invoice) {
-    this.dialog.open(EditInvoiceDialogComponent, {data: i}).afterClosed();
+  async editInvoice(invoice: Invoice) {
+    this.dialog.open(EditInvoiceDialogComponent, {data: invoice}).afterClosed();
   }
 
 
+  async delete(invoice: Invoice) {
+    await this.api.deleteInvoice(invoice);
+    this.invoices = this.invoices.filter(i => i.id !== invoice.id);
+  }
 }

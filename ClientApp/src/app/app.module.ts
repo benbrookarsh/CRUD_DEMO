@@ -19,6 +19,8 @@ import {GetInvoicesComponent} from './components/get-invoices/get-invoices.compo
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {EditInvoiceDialogComponent} from './dialogs/edit-invoice-dialog/edit-invoice-dialog.component';
 import {InvoiceStatusPipe} from './pipes/InvoiceStatusPipe';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import {InvoiceStatusPipe} from './pipes/InvoiceStatusPipe';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [
     MatDialog,

@@ -5,12 +5,23 @@
       <th>Invoice ID</th>
       <th>Status</th>
       <th>Date</th>
+      <th></th>
     </tr>
-    <tr class="row" (click)="editInvoice(i)" *ngFor="let i of invoices">
+    <tr class="row" *ngFor="let i of invoices">
       <td>{{i.invoiceNumber}}</td>
       <td>{{i.id}}</td>
       <td>{{i.status | InvoiceStatus}}</td>
       <td>{{i.date | date: 'medium'}}</td>
+      <td>
+        <mat-icon [matMenuTriggerFor]="menu" [matMenuTriggerData]="{invoice: i}">more_horiz</mat-icon>
+      </td>
     </tr>
   </table>
 </div>
+
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent let-invoice="invoice">
+    <button mat-menu-item (click)="editInvoice(invoice)">Edit Invoice</button>
+    <button mat-menu-item (click)="delete(invoice)">Delete Invoice</button>
+  </ng-template>
+</mat-menu>

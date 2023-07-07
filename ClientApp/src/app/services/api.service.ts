@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Invoice} from '../models/Invoice';
 import {Result} from '../models/Constants';
 
@@ -32,19 +32,12 @@ export class ApiService {
       .toPromise();
   }
 
-  /**
-   * Get from other APIs (not ours), doesn't use base url that's the difference
-   *
-   * @param url
-   * @param urlParams
-   */
   async getExternal<T>(url: string): Promise<T> {
-    return await this.http.get<T>(url)
-      .toPromise();
+    return await this.http.get<T>(url).toPromise();
   }
 
   async delete<T>(url: string, body: T): Promise<void> {
-    const response = await fetch(url, {
+    const response = await fetch(this.baseUrl + url, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -57,7 +50,7 @@ export class ApiService {
     }
   }
 
-  getHeaders(): HttpHeaders { // to replace normal headers
+  getHeaders(): HttpHeaders {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     return headers;

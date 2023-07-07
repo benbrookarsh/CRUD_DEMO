@@ -12,3 +12,12 @@ table {
 }
 
 
+.delete-button {
+  color: #b2b2b2;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  color: #626262;
+}
