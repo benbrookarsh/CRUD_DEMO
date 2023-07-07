@@ -11,4 +11,6 @@ public class InvoiceModel
     public DateTime Date { get; set; } = DateTime.Now;
 
     public StatusEnum Status { get; set; }
+    public decimal TotalAmount { get; set; }
+    public decimal Vat { get; set; }
 }

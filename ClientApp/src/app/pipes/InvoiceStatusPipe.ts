@@ -8,11 +8,11 @@ export class InvoiceStatusPipe implements PipeTransform {
   transform(status?: StatusEnum): string {
     switch (status) {
       case StatusEnum.paid:
-        return 'paid';
+        return 'PAID';
       case StatusEnum.unpaid:
-        return 'unpaid';
+        return 'UNPAID';
         case StatusEnum.overdue:
-        return 'overdue';
+        return 'OVERDUE';
       default:
         return '';
     }

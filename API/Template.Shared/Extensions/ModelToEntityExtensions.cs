@@ -21,6 +21,8 @@ public static class ModelToEntityExtensions
             InvoiceNumber = model.InvoiceNumber,
             Date = model.Date,
             Status = model.Status,
+            Vat = model.Vat,
+            TotalAmount = model.TotalAmount
         };
 
 

@@ -22,7 +22,10 @@
   <app-post-invoice></app-post-invoice>
 </mat-card>
 
-<mat-card class="card">
+<mat-card class="card" style="margin-bottom: 100px">
+  <mat-card-title [style.color]="Constants.color(true)">
+    View Invoices
+  </mat-card-title>
   <app-get-invoices></app-get-invoices>
 </mat-card>
 
