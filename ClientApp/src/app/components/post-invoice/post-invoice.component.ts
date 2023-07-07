@@ -7,7 +7,7 @@ import {Constants} from '../../models/Constants';
 @Component({
   selector: 'app-post-invoice',
   templateUrl: './post-invoice.component.html',
-  styleUrls: ['./post-invoice.component.css']
+  styleUrls: ['./post-invoice.component.scss']
 })
 export class PostInvoiceComponent {
 
@@ -47,4 +47,5 @@ export class PostInvoiceComponent {
   }
 
 
+  protected readonly Constants = Constants;
 }

@@ -1,4 +1,6 @@
-<mat-card-title (click)="postInvoice()">{{update? 'Edit':'Post'}} Invoice</mat-card-title>
+<mat-card-title
+  [style.color]="Constants.color(true)"
+  (click)="postInvoice()">{{update? 'Edit':'Post'}} Invoice</mat-card-title>
 
 <form style="display:grid;" (ngSubmit)="postInvoice()" #invoiceForm="ngForm">
   <mat-form-field>

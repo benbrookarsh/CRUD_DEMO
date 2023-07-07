@@ -21,6 +21,9 @@ import {EditInvoiceDialogComponent} from './dialogs/edit-invoice-dialog/edit-inv
 import {InvoiceStatusColorPipe, InvoiceStatusPipe} from './pipes/InvoiceStatusPipe';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import {ThemeSwitchComponent} from './components/theme-switch/theme-switch.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import {MatMenuModule} from '@angular/material/menu';
     GetInvoicesComponent,
     EditInvoiceDialogComponent,
     InvoiceStatusPipe,
-    InvoiceStatusColorPipe
+    InvoiceStatusColorPipe,
+    ThemeSwitchComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatSelectModule,
     MatDialogModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatButtonToggleModule,
+    MatToolbarModule
   ],
   providers: [
     MatDialog,

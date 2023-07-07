@@ -3,11 +3,12 @@ import {ApiService} from '../../services/api.service';
 import {Invoice} from '../../models/Invoice';
 import {MatDialog} from '@angular/material/dialog';
 import {EditInvoiceDialogComponent} from '../../dialogs/edit-invoice-dialog/edit-invoice-dialog.component';
+import {Constants} from '../../models/Constants';
 
 @Component({
   selector: 'app-get-invoices',
   templateUrl: './get-invoices.component.html',
-  styleUrls: ['./get-invoices.component.css']
+  styleUrls: ['./get-invoices.component.scss']
 })
 export class GetInvoicesComponent implements OnInit {
 
@@ -29,4 +30,6 @@ export class GetInvoicesComponent implements OnInit {
   async delete(invoice: Invoice) {
     await this.api.deleteInvoice(invoice);
   }
+
+  protected readonly Constants = Constants;
 }

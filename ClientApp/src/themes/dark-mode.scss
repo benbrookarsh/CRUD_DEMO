@@ -1,0 +1,37 @@
+@import '@angular/material/theming';
+
+// Define your light mode primary color
+$light-primary: mat-palette($mat-indigo);
+
+// Define your dark mode primary color
+$dark-primary: mat-palette($mat-deep-purple);
+
+// Create a theme for light mode based on the light primary color
+$light-theme: mat-light-theme($light-primary);
+
+// Create a theme for dark mode based on the dark primary color
+$dark-theme: mat-dark-theme($dark-primary);
+
+// Include the light and dark themes
+
+
+@mixin body-theme($theme) {
+  $_background: map-get($theme, background);
+  $app-background-color: mat-palette($mat-indigo);
+
+  body {
+    background-color: $app-background-color;
+  }
+}
+
+
+.dark-theme {
+  @include angular-material-color($dark-app-theme);
+  @include body-theme($dark-app-theme);
+}
+
+@include angular-material-theme($light-theme);
+@include angular-material-theme($dark-theme);
+@include body-theme($light-app-theme);
+@include angular-material-theme($light-app-theme);
+

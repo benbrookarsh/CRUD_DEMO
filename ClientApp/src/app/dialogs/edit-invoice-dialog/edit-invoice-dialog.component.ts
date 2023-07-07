@@ -5,7 +5,7 @@ import {Invoice} from '../../models/Invoice';
 @Component({
   selector: 'app-edit-invoice-dialog',
   templateUrl: './edit-invoice-dialog.component.html',
-  styleUrls: ['./edit-invoice-dialog.component.css']
+  styleUrls: ['./edit-invoice-dialog.component.scss']
 })
 export class EditInvoiceDialogComponent {
 
