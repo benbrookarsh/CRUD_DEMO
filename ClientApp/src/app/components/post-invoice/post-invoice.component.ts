@@ -38,7 +38,9 @@ export class PostInvoiceComponent {
       this.submit.emit(true);
     } else {
       this._invoice.id = Constants.guidNull;
-      response = await this.api.createInvoice(this._invoice);
+      if(this._invoice.date !== null && this._invoice.status !== null) {
+        response = await this.api.createInvoice(this._invoice);
+      }
     }
     console.log(response);
     this.isLoading = false;

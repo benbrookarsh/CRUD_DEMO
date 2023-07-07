@@ -12,14 +12,12 @@ import {EditInvoiceDialogComponent} from '../../dialogs/edit-invoice-dialog/edit
 export class GetInvoicesComponent implements OnInit {
 
   isLoading = true;
-  invoices: Invoice[] = [];
 
-  constructor(private api: ApiService, private dialog: MatDialog) {
+  constructor(public api: ApiService, private dialog: MatDialog) {
   }
 
   async ngOnInit() {
-    const res = await this.api.getAllInvoices();
-    this.invoices = res.value;
+    await this.api.getAllInvoices();
     this.isLoading = false;
   }
 
@@ -30,6 +28,5 @@ export class GetInvoicesComponent implements OnInit {
 
   async delete(invoice: Invoice) {
     await this.api.deleteInvoice(invoice);
-    this.invoices = this.invoices.filter(i => i.id !== invoice.id);
   }
 }

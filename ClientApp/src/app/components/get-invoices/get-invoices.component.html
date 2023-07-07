@@ -7,7 +7,7 @@
       <th>Date</th>
       <th></th>
     </tr>
-    <tr class="row" *ngFor="let i of invoices">
+    <tr class="row" *ngFor="let i of api.invoices">
       <td>{{i.invoiceNumber}}</td>
       <td>{{i.id}}</td>
       <td>{{i.status | InvoiceStatus}}</td>

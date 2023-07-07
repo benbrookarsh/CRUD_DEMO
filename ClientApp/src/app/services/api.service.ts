@@ -9,6 +9,8 @@ export class ApiService {
 
   baseUrl = 'api/';
 
+  invoices: Invoice[] = [];
+
   constructor(
     private http: HttpClient,
   ) {
@@ -57,15 +59,18 @@ export class ApiService {
   }
 
   async createInvoice(model: Invoice): Promise<string> {
-    return await this.post('Invoice/CreateAsync', model);
+    const invoice =  await this.post<string>('Invoice', model);
+    await this.getAllInvoices();
+    return invoice;
   }
 
   async getInvoice(id: string): Promise<Result<Invoice>> {
     return await this.get(`Invoice/${id}`);
   }
 
-  async getAllInvoices(): Promise<Result<Invoice[]>> {
-    return await this.get('Invoice/All');
+  async getAllInvoices(): Promise<void> {
+    const res = await this.get<Result<Invoice[]>>('Invoice/All');
+    this.invoices = res.value;
   }
 
   async updateInvoice(invoice: Invoice): Promise<string> {
@@ -74,5 +79,6 @@ export class ApiService {
 
   async deleteInvoice(invoice: Invoice): Promise<void> {
     await this.delete('Invoice', invoice);
+    this.invoices = this.invoices.filter(i => i.id !== invoice.id);
   }
 }
