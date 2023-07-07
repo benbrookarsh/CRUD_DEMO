@@ -34,7 +34,7 @@ export class AppComponent {
       date: this.invoice.date,
       status: 0
     };
-    const response = await this.api.postInvoice(invoice);
+    const response = await this.api.createInvoice(invoice);
     console.log(response);
     this.isLoading = false;
   }

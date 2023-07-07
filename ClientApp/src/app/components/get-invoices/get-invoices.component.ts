@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {Invoice} from '../../models/Invoice';
 import {MatDialog} from '@angular/material/dialog';
-import {EditInvoiceComponent} from '../../dialogs/edit-invoice/edit-invoice.component';
+import {EditInvoiceDialogComponent} from '../../dialogs/edit-invoice-dialog/edit-invoice-dialog.component';
 
 @Component({
   selector: 'app-get-invoices',
@@ -19,12 +19,12 @@ export class GetInvoicesComponent implements OnInit {
   }
 
   async ngOnInit() {
-    const res = await this.api.getInvoices();
+    const res = await this.api.getAllInvoices();
     this.invoices = res.value;
     this.isLoading = false;
   }
 
   async editInvoice(i: Invoice) {
-    await this.dialog.open(EditInvoiceComponent, i).afterClosed();
+    await this.dialog.open(EditInvoiceDialogComponent, i).afterClosed();
   }
 }

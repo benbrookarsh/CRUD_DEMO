@@ -43,11 +43,11 @@ builder.Services.Configure<SwaggerUIOptions>(options =>
 });
 
 // test for docker container - need to take of for pipeline
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(5001);
-    // to listen for incoming http connection on port 5001
-});
+// builder.WebHost.ConfigureKestrel(options =>
+// {
+//     options.ListenAnyIP(5001);
+//     // to listen for incoming http connection on port 5001
+// });
 
 //MySQL
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
