@@ -1,6 +1,6 @@
 .card {
   width: 80%;
-  margin: 100px auto auto;
+  margin: 22px auto auto;
   padding: 27px;
   max-width: 707px;
   min-width: 257px;
@@ -14,4 +14,11 @@
 .bottom-container {
   height: 150px;
   padding: 15px;
+}
+
+.profile-pic {
+  width: 50px;
+  border-radius: 50px;
+  position: absolute;
+  right: 22px;
 }

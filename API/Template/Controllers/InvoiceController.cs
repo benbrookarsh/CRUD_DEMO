@@ -1,5 +1,4 @@
-﻿using System.Net;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Template.Shared.Entities;
 using Template.Shared.Interfaces.IServices;
 using Template.Shared.Models;

@@ -39,7 +39,6 @@ namespace Template.Controllers
             _DalService.CheckForThrow(result.Error);
 
             return result.Status;
-
         } 
 
         [HttpGet("{id}")]

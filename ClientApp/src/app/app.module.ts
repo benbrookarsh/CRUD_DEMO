@@ -18,7 +18,7 @@ import {PostInvoiceComponent} from './components/post-invoice/post-invoice.compo
 import {GetInvoicesComponent} from './components/get-invoices/get-invoices.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {EditInvoiceDialogComponent} from './dialogs/edit-invoice-dialog/edit-invoice-dialog.component';
-import {InvoiceStatusPipe} from './pipes/InvoiceStatusPipe';
+import {InvoiceStatusColorPipe, InvoiceStatusPipe} from './pipes/InvoiceStatusPipe';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 
@@ -29,7 +29,8 @@ import {MatMenuModule} from '@angular/material/menu';
     PostInvoiceComponent,
     GetInvoicesComponent,
     EditInvoiceDialogComponent,
-    InvoiceStatusPipe
+    InvoiceStatusPipe,
+    InvoiceStatusColorPipe
   ],
   imports: [
     BrowserModule,

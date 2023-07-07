@@ -1,6 +1,6 @@
 <div>
   <table>
-    <tr style="text-align: left">
+    <tr>
       <th>Invoice Number</th>
       <th>Invoice ID</th>
       <th>Status</th>
@@ -10,18 +10,23 @@
     <tr class="row" *ngFor="let i of api.invoices">
       <td>{{i.invoiceNumber}}</td>
       <td>{{i.id}}</td>
-      <td>{{i.status | InvoiceStatus}}</td>
-      <td>{{i.date | date: 'medium'}}</td>
+      <td [style.color]="i.status | InvoiceStatusColor">{{i.status | InvoiceStatus}}</td>
+      <td>{{i.date | date: 'mediumDate'}}</td>
       <td>
-        <mat-icon [matMenuTriggerFor]="menu" [matMenuTriggerData]="{invoice: i}">more_horiz</mat-icon>
+        <mat-icon [matMenuTriggerFor]="menu" [matMenuTriggerData]="{invoice: i}" style="cursor: pointer">more_horiz</mat-icon>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Total: {{api.invoices.length}} invoice{{api.invoices.length === 1 ? '' : 's'}}
+      </th>
     </tr>
   </table>
 </div>
 
 <mat-menu #menu="matMenu">
   <ng-template matMenuContent let-invoice="invoice">
-    <button mat-menu-item (click)="editInvoice(invoice)">Edit Invoice</button>
-    <button mat-menu-item (click)="delete(invoice)">Delete Invoice</button>
+    <button mat-menu-item (click)="editInvoice(invoice)"><mat-icon>edit</mat-icon>  Edit Invoice</button>
+    <button mat-menu-item (click)="delete(invoice)"><mat-icon>delete</mat-icon><span>Delete Invoice </span> </button>
   </ng-template>
 </mat-menu>

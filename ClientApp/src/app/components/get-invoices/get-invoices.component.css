@@ -21,3 +21,7 @@ table {
 .delete-button:hover {
   color: #626262;
 }
+
+tr {
+  text-align: left;
+}

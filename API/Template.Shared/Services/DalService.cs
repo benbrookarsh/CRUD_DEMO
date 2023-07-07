@@ -1,8 +1,6 @@
 ﻿using System.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Publify.Shared.Exceptions;
-using Publify.Shared.Services;
 using Template.Shared.Entities;
 using Template.Shared.Exceptions;
 using Template.Shared.Extensions;

@@ -1,11 +1,9 @@
 ﻿using System.Linq.Expressions;
 using System.Net;
 using Microsoft.EntityFrameworkCore;
-using Template.Shared.Records;
 using Template.Shared.Results;
 using Template.Database.Infrastructure.MySql;
 using Template.Shared.Entities;
-using Template.Shared.Extensions;
 using Template.Shared.Interfaces.IRepositories;
 
 namespace Template.Database.Repositories

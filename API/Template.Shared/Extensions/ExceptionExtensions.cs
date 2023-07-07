@@ -1,5 +1,4 @@
-﻿using Publify.Shared.Exceptions;
-using Template.Shared.Exceptions;
+﻿using Template.Shared.Exceptions;
 
 namespace Template.Shared.Extensions
 {

@@ -1,4 +1,4 @@
-﻿namespace Publify.Shared.Services
+﻿namespace Template.Shared.Services
 {
     public static class HashService
     {
