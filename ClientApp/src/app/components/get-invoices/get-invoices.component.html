@@ -7,6 +7,7 @@
   </mat-card-subtitle>
   <mat-icon class="refresh" (click)="ngOnInit()">refresh</mat-icon>
 </mat-card-header>
+<p *ngIf="message" style="color: red">{{message}}</p>
 <div style="padding: 16px" *ngIf="!isLoading">
   <table [style.color]="Constants.color(true)">
     <tr style="border-bottom: 1px solid; height: 30px">

@@ -13,26 +13,40 @@ import {Constants} from '../../models/Constants';
 export class GetInvoicesComponent implements OnInit {
 
   isLoading = false;
-  total: number;
-  totalVat: number;
+  total = 0;
+  totalVat = 0;
   protected readonly Constants = Constants;
+  message = '';
 
   constructor(public api: ApiService, private dialog: MatDialog) {
   }
 
   async ngOnInit() {
     this.isLoading = true;
-    await this.api.getAllInvoices();
-    this.total = this.api.invoices.map(i => i.totalAmount).reduce((a, b) => a + b, 0);
-    this.totalVat = this.api.invoices.map(i => i.vat).reduce((a, b) => a + b, 0);
+    try {
+      await this.api.getAllInvoices();
+      this.calculateTotal();
+      this.message = '';
+    } catch (e) {
+      this.message = 'error getting invoices';
+    }
     this.isLoading = false;
+  }
+
+  calculateTotal() {
+    if (this.api.invoices?.length) {
+      this.total = this.api.invoices.map(i => i.totalAmount).reduce((a, b) => a + b, 0);
+      this.totalVat = this.api.invoices.map(i => i.vat).reduce((a, b) => a + b, 0);
+    }
   }
 
   async editInvoice(invoice: Invoice) {
     this.dialog.open(EditInvoiceDialogComponent, {data: invoice}).afterClosed();
+    this.calculateTotal();
   }
 
   async delete(invoice: Invoice) {
     await this.api.deleteInvoice(invoice);
+    this.calculateTotal();
   }
 }

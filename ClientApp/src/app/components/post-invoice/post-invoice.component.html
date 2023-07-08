@@ -32,6 +32,8 @@
     </mat-select>
   </mat-form-field>
 
+  <p *ngIf="message" style="color: red">{{message}}</p>
+
   <button mat-raised-button color="primary" type="submit">{{update? 'Update':'Create'}}</button>
 </form>
 

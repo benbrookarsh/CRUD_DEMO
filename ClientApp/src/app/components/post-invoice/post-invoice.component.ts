@@ -15,6 +15,9 @@ export class PostInvoiceComponent {
   _invoice = new Invoice();
   statusOptions: string[] = [];
   update = false;
+  message = '';
+
+  protected readonly Constants = Constants;
 
   constructor(
     private api: ApiService,
@@ -33,12 +36,18 @@ export class PostInvoiceComponent {
 
 
   async postInvoice() {
+    this.message = '';
     this.isLoading = true;
     let response;
     if (this.update) {
       response = await this.api.updateInvoice(this._invoice);
       this.submit.emit(true);
     } else {
+      if(this.api.invoices.find(i => i.invoiceNumber === this._invoice.invoiceNumber)) {
+        this.message = 'invoice number already exists';
+        this.isLoading = false;
+        return;
+      }
       this._invoice.id = Constants.guidNull;
       if(this._invoice.date !== null && this._invoice.status !== null) {
         response = await this.api.createInvoice(this._invoice);
@@ -49,5 +58,4 @@ export class PostInvoiceComponent {
   }
 
 
-  protected readonly Constants = Constants;
 }
