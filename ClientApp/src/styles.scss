@@ -32,3 +32,22 @@ $dark-app-theme:   mat-dark-theme((
 .dark-theme {
   @include angular-material-color($dark-app-theme);
 }
+
+
+//toasts
+.toast-success{
+  @apply bg-white text-gray-500 font-normal;
+  border: 1px solid #6b6b6b;
+  box-shadow: none;
+}
+
+.mat-simple-snackbar-action {
+  color: #6b6b6b;
+}
+
+.toast-failure {
+  @apply   text-red-400 font-normal;
+  background: #fff4f4;
+  border: 1px solid #ff9090;
+  box-shadow: none;
+}

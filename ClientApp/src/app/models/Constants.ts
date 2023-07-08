@@ -8,6 +8,10 @@ export class Constants {
     return flip ? (isDarkTheme ? 'white' : 'black') : (isDarkTheme ? 'black' : 'white');
   }
 
+  static darkMode(): boolean {
+    return ThemeSwitchComponent.theme === ThemeSwitchComponent.DARK_THEME_DARK;
+  }
+
 
   static getEnumValues(enumObject: any): string[] {
     return Object.keys(enumObject)

@@ -24,6 +24,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import {ThemeSwitchComponent} from './components/theme-switch/theme-switch.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {HeaderComponent} from './components/header/header.component';
+import {ToastService} from './services/toast.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     InvoiceStatusPipe,
     InvoiceStatusColorPipe,
     ThemeSwitchComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   ],
   providers: [
     MatDialog,
+    ToastService,
+    MatSnackBar,
     {
       provide: MAT_DIALOG_DATA,
       useValue: {}

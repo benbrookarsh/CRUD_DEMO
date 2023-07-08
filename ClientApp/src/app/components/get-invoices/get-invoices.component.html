@@ -1,4 +1,13 @@
-<div>
+<mat-card-header>
+  <mat-card-title [style.color]="Constants.color(true)">
+    View Invoices
+  </mat-card-title>
+  <mat-card-subtitle>
+    To Edit or Delete an invoice, click the three dots on the right side of the invoice.
+  </mat-card-subtitle>
+  <mat-icon class="refresh" (click)="ngOnInit()">refresh</mat-icon>
+</mat-card-header>
+<div *ngIf="!isLoading">
   <table [style.color]="Constants.color(true)">
     <tr>
       <th>Invoice Number</th>
@@ -27,6 +36,8 @@
     </tr>
   </table>
 </div>
+
+<mat-spinner *ngIf="isLoading" strokeWidth="2" style="margin: auto"></mat-spinner>
 
 <mat-menu #menu="matMenu">
   <ng-template matMenuContent let-invoice="invoice">

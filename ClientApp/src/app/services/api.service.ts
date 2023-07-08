@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Invoice} from '../models/Invoice';
 import {Result} from '../models/Constants';
+import {ToastService} from './toast.service';
 
 
 @Injectable()
@@ -12,6 +13,7 @@ export class ApiService {
   invoices: Invoice[] = [];
 
   constructor(
+    private toast: ToastService,
     private http: HttpClient,
   ) {
   }
@@ -59,9 +61,15 @@ export class ApiService {
   }
 
   async createInvoice(model: Invoice): Promise<string> {
-    const invoice =  await this.post<string>('Invoice', model);
-    await this.getAllInvoices();
-    return invoice;
+    try {
+      const invoice =  await this.post<string>('Invoice', model);
+      this.toast.openToast('Invoice created successfully', true);
+      await this.getAllInvoices();
+      return invoice;
+    } catch (e) {
+      this.toast.openToast('Error creating invoice', false);
+      return '';
+    }
   }
 
   async getInvoice(id: string): Promise<Result<Invoice>> {

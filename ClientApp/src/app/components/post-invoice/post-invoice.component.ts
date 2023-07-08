@@ -16,7 +16,9 @@ export class PostInvoiceComponent {
   statusOptions: string[] = [];
   update = false;
 
-  constructor(private api: ApiService) {
+  constructor(
+    private api: ApiService,
+  ) {
     this.statusOptions = Constants.getEnumValues(StatusEnum);
   }
 

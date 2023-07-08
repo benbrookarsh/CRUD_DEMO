@@ -12,12 +12,13 @@ import {Constants} from '../../models/Constants';
 })
 export class GetInvoicesComponent implements OnInit {
 
-  isLoading = true;
+  isLoading = false;
 
   constructor(public api: ApiService, private dialog: MatDialog) {
   }
 
   async ngOnInit() {
+    this.isLoading = true;
     await this.api.getAllInvoices();
     this.isLoading = false;
   }

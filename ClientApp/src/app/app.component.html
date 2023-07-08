@@ -1,43 +1,24 @@
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span>Invoice Crud Demo</span>
-      <span class="example-spacer"></span>
-      <app-theme-switch></app-theme-switch>
-    </mat-toolbar-row>
-  </mat-toolbar>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Invoice Crud Demo</span>
+    <span class="example-spacer"></span>
+    <app-theme-switch></app-theme-switch>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-  <div class="container" [style.background]="Constants.color()">
+<div class="container" [style.background]="Constants.darkMode()? 'rgb(0 16 32)':'#f4f4f4'">
 
-<mat-card class="card">
-  <mat-card-header>
-    <img mat-card-avatar  src="assets/benprofile.jpg" alt="ben profile"/>
-    <mat-card-title [style.color]="Constants.color(true)">
-      Invoice CRUD
-    </mat-card-title>
-      <mat-card-subtitle>A project by <a [style.color]="Constants.color(true)" target="_blank" href="https://www.linkedin.com/in/benjamin-brookarsh-b1b39972/">Ben Brookarsh</a>
-        Like what you see? Call me on <a [style.color]="Constants.color(true)" href="tel:+972506825960">(+972) 050-6825960</a>
-        or send an email to: <a [style.color]="Constants.color(true)" href = "mailto: benjaminbrookarsh@gmail.com">benjaminbrookarsh@gmail.com</a>
-      </mat-card-subtitle>
+  <mat-card class="card">
+    <app-header></app-header>
+  </mat-card>
 
-    <mat-card-subtitle>
-      This project was made with Angular 16 for the client side and .NET Entity Framework with MySQL for the server side.
-    </mat-card-subtitle>
-  </mat-card-header>
+  <mat-card class="card">
+    <app-post-invoice></app-post-invoice>
+  </mat-card>
 
-</mat-card>
+  <mat-card class="card" >
+    <app-get-invoices></app-get-invoices>
+  </mat-card>
 
-<mat-card class="card">
-  <app-post-invoice></app-post-invoice>
-</mat-card>
-
-<mat-card class="card" style="margin-bottom: 100px">
-  <mat-card-title [style.color]="Constants.color(true)">
-    View Invoices
-  </mat-card-title>
-  <mat-card-subtitle>
-    To Edit or Delete an invoice, click the three dots on the right side of the invoice.
-  </mat-card-subtitle>
-  <app-get-invoices></app-get-invoices>
-</mat-card>
-
+  <div style="height: 100px"></div>
 </div>
