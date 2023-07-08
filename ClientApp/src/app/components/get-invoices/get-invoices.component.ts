@@ -13,6 +13,9 @@ import {Constants} from '../../models/Constants';
 export class GetInvoicesComponent implements OnInit {
 
   isLoading = false;
+  total: number;
+  totalVat: number;
+  protected readonly Constants = Constants;
 
   constructor(public api: ApiService, private dialog: MatDialog) {
   }
@@ -20,6 +23,8 @@ export class GetInvoicesComponent implements OnInit {
   async ngOnInit() {
     this.isLoading = true;
     await this.api.getAllInvoices();
+    this.total = this.api.invoices.map(i => i.totalAmount).reduce((a, b) => a + b, 0);
+    this.totalVat = this.api.invoices.map(i => i.vat).reduce((a, b) => a + b, 0);
     this.isLoading = false;
   }
 
@@ -27,10 +32,7 @@ export class GetInvoicesComponent implements OnInit {
     this.dialog.open(EditInvoiceDialogComponent, {data: invoice}).afterClosed();
   }
 
-
   async delete(invoice: Invoice) {
     await this.api.deleteInvoice(invoice);
   }
-
-  protected readonly Constants = Constants;
 }

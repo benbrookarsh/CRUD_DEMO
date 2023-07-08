@@ -7,32 +7,38 @@
   </mat-card-subtitle>
   <mat-icon class="refresh" (click)="ngOnInit()">refresh</mat-icon>
 </mat-card-header>
-<div *ngIf="!isLoading">
+<div style="padding: 16px" *ngIf="!isLoading">
   <table [style.color]="Constants.color(true)">
-    <tr>
+    <tr style="border-bottom: 1px solid; height: 30px">
       <th>Invoice Number</th>
       <th>Invoice ID</th>
-      <th>VAT</th>
-      <th>Total</th>
       <th>Status</th>
       <th>Date</th>
+      <th>VAT</th>
+      <th>Total</th>
       <th></th>
     </tr>
     <tr class="row" *ngFor="let i of api.invoices">
       <td>{{i.invoiceNumber}}</td>
       <td>{{i.id}}</td>
-      <td>{{i.vat | currency: 'USD'}}</td>
-      <td>{{i.totalAmount | currency: 'USD'}}</td>
       <td [style.color]="i.status | InvoiceStatusColor">{{i.status | InvoiceStatus}}</td>
       <td>{{i.date | date: 'mediumDate'}}</td>
+      <td>{{i.vat | currency: 'USD'}}</td>
+      <td>{{i.totalAmount | currency: 'USD'}}</td>
       <td>
         <mat-icon [matMenuTriggerFor]="menu" [matMenuTriggerData]="{invoice: i}" style="cursor: pointer">more_horiz</mat-icon>
       </td>
     </tr>
-    <tr>
+    <tr style="border-top: 1px solid; height: 30px">
       <th>
         Total: {{api?.invoices?.length}} invoice{{api?.invoices?.length === 1 ? '' : 's'}}
       </th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>{{totalVat | currency: 'USD'}}</th>
+      <th>{{total  | currency: 'USD'}}</th>
+      <th></th>
     </tr>
   </table>
 </div>
