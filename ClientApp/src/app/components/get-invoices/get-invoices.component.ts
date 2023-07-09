@@ -41,7 +41,9 @@ export class GetInvoicesComponent implements OnInit, OnChanges {
   initTable() {
       this.dataSource = new MatTableDataSource(this.invoices);
       this.dataSource.paginator = this.myPaginator;
-      this.myPaginator.length = this.invoices.length;
+      if (this.myPaginator) {
+        this.myPaginator.length = this.invoices.length;
+      }
   }
 
   calculateTotal() {

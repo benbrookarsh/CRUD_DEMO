@@ -86,7 +86,12 @@ export class ApiService {
   }
 
   async deleteInvoice(invoice: Invoice): Promise<void> {
-    await this.delete('Invoice', invoice);
-    this.invoices = this.invoices.filter(i => i.id !== invoice.id);
+    try {
+      await this.delete('Invoice', invoice);
+      this.invoices = this.invoices.filter(i => i.id !== invoice.id);
+      this.toast.openToast('Invoice deleted successfully', true);
+    } catch (e) {
+      this.toast.openToast('Error deleting invoice', false);
+    }
   }
 }
