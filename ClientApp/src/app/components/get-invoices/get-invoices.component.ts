@@ -1,43 +1,55 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {Invoice} from '../../models/Invoice';
 import {MatDialog} from '@angular/material/dialog';
 import {EditInvoiceDialogComponent} from '../../dialogs/edit-invoice-dialog/edit-invoice-dialog.component';
 import {Constants} from '../../models/Constants';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-get-invoices',
   templateUrl: './get-invoices.component.html',
   styleUrls: ['./get-invoices.component.scss']
 })
-export class GetInvoicesComponent implements OnInit {
+export class GetInvoicesComponent implements OnInit, OnChanges {
 
-  isLoading = false;
+  @ViewChild(MatPaginator) myPaginator: MatPaginator;
+
+  @Input() invoices: Invoice[];
+
+
   total = 0;
   totalVat = 0;
-  protected readonly Constants = Constants;
-  message = '';
 
-  constructor(public api: ApiService, private dialog: MatDialog) {
+  dataSource = new MatTableDataSource<Invoice>();
+
+  displayedColumns: string[] = ['invoiceNumber', 'id', 'status', 'date', 'vat', 'totalAmount', 'actions'];
+  protected readonly Constants = Constants;
+
+  constructor(private dialog: MatDialog, private api: ApiService) {
+  }
+
+  ngOnChanges() {
+    this.calculateTotal();
   }
 
   async ngOnInit() {
-    this.isLoading = true;
-    try {
-      await this.api.getAllInvoices();
-      this.calculateTotal();
-      this.message = '';
-    } catch (e) {
-      this.message = 'error getting invoices';
-    }
-    this.isLoading = false;
+    this.calculateTotal();
+  }
+
+  initTable() {
+      this.dataSource = new MatTableDataSource(this.invoices);
+      this.dataSource.paginator = this.myPaginator;
+      this.myPaginator.length = this.invoices.length;
   }
 
   calculateTotal() {
-    if (this.api.invoices?.length) {
-      this.total = this.api.invoices.map(i => i.totalAmount).reduce((a, b) => a + b, 0);
-      this.totalVat = this.api.invoices.map(i => i.vat).reduce((a, b) => a + b, 0);
+    if (this.invoices?.length) {
+      this.total = this.invoices.map(i => i.totalAmount).reduce((a, b) => a + b, 0);
+      this.totalVat = this.invoices.map(i => i.vat).reduce((a, b) => a + b, 0);
     }
+    this.initTable();
   }
 
   async editInvoice(invoice: Invoice) {
