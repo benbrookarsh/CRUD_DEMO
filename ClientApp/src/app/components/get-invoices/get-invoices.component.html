@@ -6,10 +6,10 @@
   <mat-card-subtitle>
     To Edit or Delete an invoice, click the three dots on the right side of the invoice.
   </mat-card-subtitle>
-  <mat-icon class="refresh" (click)="ngOnInit()">refresh</mat-icon>
+  <mat-icon class="refresh" (click)="refreshInvoices()">refresh</mat-icon>
 </mat-card-header>
 <div>
-  <mat-table [dataSource]="dataSource">
+  <mat-table *ngIf="invoices !== null" [dataSource]="dataSource">
     <!-- Invoice Number Column -->
     <ng-container matColumnDef="invoiceNumber">
       <mat-header-cell *matHeaderCellDef> Invoice Number </mat-header-cell>
@@ -68,6 +68,8 @@
 
 
   </mat-table>
+
+  <mat-spinner style="margin: auto" *ngIf="invoices === null"></mat-spinner>
 
 
 

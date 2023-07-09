@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {Invoice} from '../../models/Invoice';
 import {MatDialog} from '@angular/material/dialog';
@@ -15,8 +15,8 @@ import {MatPaginator} from '@angular/material/paginator';
 export class GetInvoicesComponent implements OnInit, OnChanges {
 
   @ViewChild(MatPaginator) myPaginator: MatPaginator;
-
   @Input() invoices: Invoice[];
+  @Output() refresh = new EventEmitter<boolean>();
 
 
   total = 0;
@@ -36,6 +36,11 @@ export class GetInvoicesComponent implements OnInit, OnChanges {
 
   async ngOnInit() {
     this.calculateTotal();
+  }
+
+  refreshInvoices() {
+    this.invoices = null;
+    this.refresh.emit(true);
   }
 
   initTable() {

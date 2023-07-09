@@ -17,7 +17,7 @@
   </mat-card>
 
   <mat-card class="card">
-    <app-get-invoices [invoices]="api.invoices"></app-get-invoices>
+    <app-get-invoices (refresh)="ngOnInit()" [invoices]="api.invoices"></app-get-invoices>
   </mat-card>
 
   <div style="height: 100px"></div>
